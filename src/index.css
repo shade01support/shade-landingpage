@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at 20% 20%, rgba(93, 24, 236, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(93, 24, 236, 0.06), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(93, 24, 236, 0.08), transparent 35%),
+    #f8f9fb;
+  color: #1f1f1f;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5D18EC;
+  border-radius: 5px;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
