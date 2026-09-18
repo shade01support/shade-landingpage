@@ -72,9 +72,9 @@ const HeroSection = () => {
             {/* Main Headline */}
             <motion.div variants={itemVariants} className="space-y-2">
               <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-enigma text-secondary leading-[1.08] tracking-tight">
-                WHERE ARE YOU <br className="hidden sm:inline" />
+                WHERE DO YOU <br className="hidden sm:inline" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-indigo-600">
-                  GOING TOMORROW?
+                  WANT TO GO?
                 </span>
               </h1>
             </motion.div>
