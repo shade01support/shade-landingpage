@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { FaFacebook, FaTwitter, FaInstagram,FaEnvelope, FaArrowRight,FaYoutube } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import logoImage from '../assert/shade logo.png'
+import shadeWordmark from '../assert/shade_wordmark.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -32,11 +34,11 @@ const Footer = () => {
           {/* Brand + CTA */}
           <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <span className="text-2xl font-enigma text-primary">S</span>
+              <div className="h-10 w-10 flex items-center justify-center">
+                <img src={logoImage} alt="Shade Logo" className="h-full w-full object-contain" />
               </div>
               <div>
-                <p className="text-lg font-enigma text-secondary">SHADE</p>
+                <img src={shadeWordmark} alt="SHADE" className="h-6 w-auto object-contain" />
                 <p className="text-sm text-gray-600 font-metropolis">Ride together, spend less.</p>
               </div>
             </div>

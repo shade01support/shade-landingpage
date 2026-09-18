@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import logoImage from '../assert/shade logo.png'
+import shadeWordmark from '../assert/shade_wordmark.png'
 
 const Navbar = () => {
 
@@ -61,15 +62,16 @@ const Navbar = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-3xl font-enigma text-primary tracking-tight"
-              style={{
-                textShadow: '0 2px 8px rgba(93,24,236,0.2)',
-                lineHeight: '1',
-                display: 'flex',
-                alignItems: 'center',
-              }}
+              className="flex items-center"
             >
-              SHADE
+              <img
+                src={shadeWordmark}
+                alt="Shade"
+                className="h-8 sm:h-9 w-auto object-contain"
+                style={{
+                  filter: 'drop-shadow(0 2px 8px rgba(93,24,236,0.2))',
+                }}
+              />
             </motion.div>
           </Link>
 
