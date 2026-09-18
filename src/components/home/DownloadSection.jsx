@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaGooglePlay, FaApple, FaArrowRight, FaQrcode, FaCheckCircle, FaStar } from 'react-icons/fa'
+import { FaArrowRight, FaQrcode } from 'react-icons/fa'
 import qr from '../../assert/QR.jpeg'
 
 const DownloadSection = () => {
@@ -58,55 +58,6 @@ const DownloadSection = () => {
                     <FaArrowRight className="transform group-hover:translate-x-1.5 transition-transform duration-300" />
                   </motion.button>
                 </a>
-              </div>
-
-              {/* App Store / Play Store Badges */}
-              <div className="pt-2">
-                <p className="text-xs uppercase font-enigma tracking-wider text-gray-500 mb-3">
-                  Available on iOS and Android:
-                </p>
-                <div className="flex flex-wrap items-center gap-4">
-                  {/* Google Play Button */}
-                  <a
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 bg-secondary hover:bg-black text-white px-6 py-3 rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    <FaGooglePlay className="text-2xl text-emerald-400" />
-                    <div className="text-left leading-tight">
-                      <p className="text-[10px] uppercase tracking-wider text-gray-300 font-metropolis">Get it on</p>
-                      <p className="text-sm font-enigma font-bold text-white">Google Play</p>
-                    </div>
-                  </a>
-
-                  {/* App Store Button */}
-                  <a
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 bg-secondary hover:bg-black text-white px-6 py-3 rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    <FaApple className="text-2xl text-white" />
-                    <div className="text-left leading-tight">
-                      <p className="text-[10px] uppercase tracking-wider text-gray-300 font-metropolis">Download on</p>
-                      <p className="text-sm font-enigma font-bold text-white">App Store</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              {/* Trust highlights */}
-              <div className="flex flex-wrap items-center gap-6 text-xs sm:text-sm font-metropolis text-gray-500 pt-2">
-                <span className="flex items-center gap-1.5">
-                  <FaCheckCircle className="text-emerald-500" /> 100% Verified Users
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <FaCheckCircle className="text-emerald-500" /> Instant Match
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <FaStar className="text-amber-400" /> 4.9 App Rating
-                </span>
               </div>
             </motion.div>
 
