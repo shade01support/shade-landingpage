@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import logoImage from '../assert/shade logo.png'
 import shadeWordmark from '../assert/shade_wordmark.png'
 
 const Navbar = () => {
@@ -44,21 +43,7 @@ const Navbar = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative flex items-center justify-center h-12 w-12"
-            >
-              <img
-                src={logoImage}
-                alt="Shade logo"
-                className="h-full w-full object-contain"
-                style={{
-                  filter: 'drop-shadow(0 2px 4px rgba(93, 24, 236, 0.3))',
-                }}
-              />
-            </motion.div>
+          <Link to="/" className="flex items-center group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -67,7 +52,7 @@ const Navbar = () => {
               <img
                 src={shadeWordmark}
                 alt="Shade"
-                className="h-8 sm:h-9 w-auto object-contain"
+                className="h-9 sm:h-10 w-auto object-contain"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(93,24,236,0.2))',
                 }}
