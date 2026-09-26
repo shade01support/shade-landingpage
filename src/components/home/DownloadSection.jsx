@@ -1,9 +1,24 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { FaGooglePlay, FaArrowRight, FaQrcode, FaCheckCircle, FaStar } from 'react-icons/fa'
 import qr from '../../assert/QR.jpeg'
+import { getPlayStoreRating } from '../../services/ratingService'
 
 const DownloadSection = () => {
+  const [appRating, setAppRating] = useState('4.4')
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.shade.app&pcampaignid=web_share'
+
+  useEffect(() => {
+    let isMounted = true
+    getPlayStoreRating().then((rating) => {
+      if (isMounted && rating) {
+        setAppRating(rating)
+      }
+    })
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <section id="download" className="py-20 md:py-28 bg-gradient-to-br from-[#f6f2ff] via-white to-[#ede8ff] relative overflow-hidden">
@@ -91,7 +106,7 @@ const DownloadSection = () => {
                   <FaCheckCircle className="text-emerald-500" /> Instant Match
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <FaStar className="text-amber-400" /> 4.9 App Rating
+                  <FaStar className="text-amber-400" /> {appRating} App Rating
                 </span>
               </div>
             </motion.div>
