@@ -4,7 +4,8 @@ import HowItWorks from '../components/home/HowItWorks'
 import BrandStatement from '../components/home/BrandStatement'
 import AboutShade from '../components/home/AboutShade'
 import StatsSection from '../components/home/StatsSection'
-import Features from '../components/home/Features'
+import BlogSection from '../components/home/BlogSection'
+import FAQSection from '../components/home/FAQSection'
 import DownloadSection from '../components/home/DownloadSection'
 
 const Home = () => {
@@ -20,7 +21,8 @@ const Home = () => {
       <BrandStatement />
       <AboutShade />
       <StatsSection />
-      <Features />
+      <BlogSection />
+      <FAQSection />
       <DownloadSection />
     </motion.div>
   )

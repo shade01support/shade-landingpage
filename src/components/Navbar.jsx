@@ -1,22 +1,85 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import shadeWordmark from '../assert/shade_wordmark.png'
 
 const Navbar = () => {
-
   const [isOpen, setIsOpen] = useState(false)
-  const scrolled = false
+  const [activeSection, setActiveSection] = useState('hero')
   const location = useLocation()
 
   const navLinks = [
-    { path: '/', label: 'HOME' },
-    { path: '/about', label: 'ABOUT' },
-    { path: '/blog', label: 'BLOG' },
-    { path: '/faq', label: 'FAQ' },
-    { path: '/contact', label: 'CONTACT' },
+    { path: '/', id: 'hero', label: 'HOME' },
+    { path: '/#about', id: 'about', label: 'ABOUT' },
+    { path: '/#blog', id: 'blog', label: 'BLOG' },
+    { path: '/#faq', id: 'faq', label: 'FAQ' },
+    { path: '/contact', id: 'contact', label: 'CONTACT' },
   ]
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('')
+      return
+    }
+
+    const handleScroll = () => {
+      const sectionIds = ['faq', 'blog', 'about', 'hero']
+      const scrollPosition = window.scrollY + 250
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id)
+        if (element) {
+          const top = element.offsetTop
+          if (scrollPosition >= top) {
+            setActiveSection(id)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [location.pathname])
+
+  const handleNavClick = (e, link) => {
+    setIsOpen(false)
+    if (location.pathname === '/') {
+      if (link.id === 'hero') {
+        e.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.history.replaceState(null, '', '/')
+        setActiveSection('hero')
+      } else if (link.id && document.getElementById(link.id)) {
+        e.preventDefault()
+        const element = document.getElementById(link.id)
+        element.scrollIntoView({ behavior: 'smooth' })
+        window.history.replaceState(null, '', `/#${link.id}`)
+        setActiveSection(link.id)
+      }
+    }
+  }
+
+  const handleLogoClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.history.replaceState(null, '', '/')
+      setActiveSection('hero')
+    }
+  }
+
+  const isLinkActive = (link) => {
+    if (location.pathname === '/') {
+      if (link.id === 'hero') {
+        return activeSection === 'hero' || !activeSection
+      }
+      return activeSection === link.id
+    }
+    return location.pathname === link.path
+  }
 
   return (
     <motion.nav
@@ -43,7 +106,7 @@ const Navbar = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center group">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center group">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -62,41 +125,45 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="relative group"
-              >
-                <span
-                  className={`relative z-10 font-metropolis font-medium text-sm uppercase tracking-wider transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? 'text-primary font-semibold'
-                      : 'text-secondary/80 hover:text-primary'
-                  }`}
+            {navLinks.map((link) => {
+              const active = isLinkActive(link)
+              return (
+                <Link
+                  key={link.id}
+                  to={link.path}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className="relative group"
                 >
-                  {link.label}
-                </span>
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full"
-                    style={{
-                      background: 'linear-gradient(to right, transparent, #5D18EC, transparent)',
-                      boxShadow: '0 2px 8px rgba(93,24,236,0.4)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  <span
+                    className={`relative z-10 font-metropolis font-medium text-sm uppercase tracking-wider transition-all duration-300 ${
+                      active
+                        ? 'text-primary font-semibold'
+                        : 'text-secondary/80 hover:text-primary'
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                  {active && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full"
+                      style={{
+                        background: 'linear-gradient(to right, transparent, #5D18EC, transparent)',
+                        boxShadow: '0 2px 8px rgba(93,24,236,0.4)',
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <div
+                    className={`absolute -bottom-2 left-0 right-0 h-[2px] rounded-full transition-all duration-300 ${
+                      active
+                        ? 'opacity-0'
+                        : 'opacity-0 group-hover:opacity-100 bg-primary/30'
+                    }`}
                   />
-                )}
-                <div
-                  className={`absolute -bottom-2 left-0 right-0 h-[2px] rounded-full transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? 'opacity-0'
-                      : 'opacity-0 group-hover:opacity-100 bg-primary/30'
-                  }`}
-                />
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
             <a href="https://play.google.com/store/apps/details?id=com.shade.app&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 24px rgba(93,24,236,0.4)' }}
@@ -138,20 +205,23 @@ const Navbar = () => {
         }}
       >
         <div className="px-4 pt-3 pb-5 space-y-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setIsOpen(false)}
-              className={`block py-3 px-4 rounded-xl transition-all duration-300 font-medium ${
-                location.pathname === link.path
-                  ? 'bg-primary/10 text-primary shadow-sm'
-                  : 'text-secondary hover:bg-white/60 hover:text-primary'
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isLinkActive(link)
+            return (
+              <Link
+                key={link.id}
+                to={link.path}
+                onClick={(e) => handleNavClick(e, link)}
+                className={`block py-3 px-4 rounded-xl transition-all duration-300 font-medium ${
+                  active
+                    ? 'bg-primary/10 text-primary shadow-sm'
+                    : 'text-secondary hover:bg-white/60 hover:text-primary'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <a href="https://play.google.com/store/apps/details?id=com.shade.app&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
             <motion.button
               whileTap={{ scale: 0.95 }}

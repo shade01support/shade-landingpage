@@ -34,7 +34,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#f8f5ff] via-white to-[#f0ebff] py-12 md:py-20">
+    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#f8f5ff] via-white to-[#f0ebff] py-12 md:py-20">
       {/* Background glowing gradient blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -left-20 top-10 w-96 h-96 bg-primary/15 blur-3xl rounded-full animate-pulse" />

@@ -16,15 +16,26 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { label: 'About Us', path: '/about' },
-      { label: 'Blog', path: '/blog' },
-      { label: 'FAQ', path: '/faq' },
-      { label: 'Contact', path: '/contact' },
+      { label: 'About Us', path: '/#about', id: 'about' },
+      { label: 'Blog', path: '/#blog', id: 'blog' },
+      { label: 'FAQ', path: '/#faq', id: 'faq' },
+      { label: 'Contact', path: '/contact', id: 'contact' },
     ],
     legal: [
       { label: 'Privacy Policy', path: '/privacy' },
       { label: 'Terms of Service', path: '/terms' },
     ],
+  }
+
+  const handleFooterLinkClick = (e, link) => {
+    if (window.location.pathname === '/' && link.id && link.id !== 'contact') {
+      const element = document.getElementById(link.id)
+      if (element) {
+        e.preventDefault()
+        element.scrollIntoView({ behavior: 'smooth' })
+        window.history.replaceState(null, '', `/#${link.id}`)
+      }
+    }
   }
 
   return (
@@ -76,6 +87,7 @@ const Footer = () => {
                   <li key={index}>
                     <Link
                       to={link.path}
+                      onClick={(e) => handleFooterLinkClick(e, link)}
                       className="text-gray-600 hover:text-primary transition-colors font-metropolis text-sm"
                     >
                       {link.label}
