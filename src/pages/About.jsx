@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import AboutUs from '../components/about/AboutUs'
+import StatsSection from '../components/home/StatsSection'
 import Vision from '../components/about/Vision'
 import Media from '../components/about/Media'
 
@@ -13,6 +14,7 @@ const About = () => {
       className="pt-20"
     >
       <AboutUs />
+      <StatsSection />
       <Vision />
       <Media />
     </motion.div>
