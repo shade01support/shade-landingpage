@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import { FaFacebook, FaTwitter, FaInstagram,FaEnvelope, FaArrowRight,FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaInstagram, FaEnvelope, FaArrowRight, FaYoutube } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import logoImage from '../assert/shade logo.png'
 import shadeWordmark from '../assert/shade_wordmark.png'
 
 const Footer = () => {
@@ -9,7 +8,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: FaFacebook, href: 'https://www.facebook.com/share/1CKbJNxqxh/?mibextid=wwXIfr', label: 'Facebook' },
-    { icon: FaTwitter, href: 'https://x.com/shade_appindia?s=21', label: 'x' },
+    { icon: FaTwitter, href: 'https://x.com/shade_appindia?s=21', label: 'X (Twitter)' },
     { icon: FaInstagram, href: 'https://www.instagram.com/shade.app?igsh=aHNkMHVqNDVoODF0', label: 'Instagram' },
     { icon: FaYoutube, href: 'https://youtube.com/@shade_app?si=AJst4TXdf4zEJTbF', label: 'YouTube' },
   ]
@@ -28,55 +27,77 @@ const Footer = () => {
   }
 
   return (
-    <footer className="mt-auto bg-gradient-to-b from-white via-white to-primary/10 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <footer className="mt-auto bg-gradient-to-b from-white via-purple-50/20 to-primary/10 border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
           {/* Brand + CTA */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="h-10 w-10 flex items-center justify-center">
-                <img src={logoImage} alt="Shade Logo" className="h-full w-full object-contain" />
-              </div>
-              <div>
-                <img src={shadeWordmark} alt="SHADE" className="h-6 w-auto object-contain" />
-                <p className="text-sm text-gray-600 font-metropolis">Ride together, spend less.</p>
-              </div>
+          <div className="lg:col-span-6 space-y-5">
+            <div>
+              <Link to="/" className="inline-block">
+                <img
+                  src={shadeWordmark}
+                  alt="Shade"
+                  className="h-8 md:h-9 w-auto object-contain"
+                  style={{
+                    filter: 'drop-shadow(0 2px 8px rgba(93,24,236,0.15))',
+                  }}
+                />
+              </Link>
+              <p className="text-xs md:text-sm font-semibold text-primary/80 uppercase tracking-wider mt-2 font-metropolis">
+                Ride together, spend less.
+              </p>
             </div>
-            <p className="text-gray-600 font-metropolis text-sm">
-              Built for college communities—share the ride, split the cost, make friends.
+
+            <p className="text-gray-600 font-metropolis text-sm leading-relaxed max-w-md">
+              Built for college communities—share the ride, split the cost, make friends, and travel smarter.
             </p>
-            <a href="https://play.google.com/store/apps/details?id=com.shade.app&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
-              <motion.div whileHover={{ x: 4 }} className="inline-flex items-center space-x-2 text-primary font-semibold cursor-pointer">
-                <span>Get started</span>
-                <FaArrowRight size={14} />
-              </motion.div>
-            </a>
-            <div className="flex space-x-4 pt-2">
+
+            <div className="pt-1">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.shade.app&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.04, x: 2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium shadow-md shadow-primary/25 hover:bg-[#4a12c0] hover:shadow-lg hover:shadow-primary/35 transition-all duration-300 group cursor-pointer"
+                >
+                  <span>Get started</span>
+                  <FaArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
+                </motion.div>
+              </a>
+            </div>
+
+            <div className="flex items-center space-x-3 pt-2">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  whileHover={{ scale: 1.15, y: -2 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.12, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm"
+                  className="h-10 w-10 rounded-full bg-white border border-primary/15 text-primary flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-primary/20"
                 >
-                  <social.icon size={18} />
+                  <social.icon size={16} />
                 </motion.a>
               ))}
             </div>
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-2 gap-8 lg:col-span-2 justify-self-end">
+          <div className="lg:col-span-6 grid grid-cols-2 gap-8 sm:gap-12 lg:justify-end lg:max-w-sm lg:ml-auto">
             <div>
               <h4 className="font-enigma text-lg text-secondary mb-4">Company</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {footerLinks.company.map((link, index) => (
                   <li key={index}>
                     <Link
                       to={link.path}
-                      className="text-gray-600 hover:text-primary transition-colors font-metropolis text-sm"
+                      className="text-gray-600 hover:text-primary transition-colors font-metropolis text-sm inline-block hover:translate-x-1 duration-200"
                     >
                       {link.label}
                     </Link>
@@ -87,12 +108,12 @@ const Footer = () => {
 
             <div>
               <h4 className="font-enigma text-lg text-secondary mb-4">Legal</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {footerLinks.legal.map((link, index) => (
                   <li key={index}>
                     <Link
                       to={link.path}
-                      className="text-gray-600 hover:text-primary transition-colors font-metropolis text-sm"
+                      className="text-gray-600 hover:text-primary transition-colors font-metropolis text-sm inline-block hover:translate-x-1 duration-200"
                     >
                       {link.label}
                     </Link>
