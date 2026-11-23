@@ -18,34 +18,30 @@ const Media = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-md mx-auto"
         >
           <div className="glass-card rounded-2xl shadow-2xl overflow-hidden border border-white/60 bg-white">
-            <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center relative">
-              {/* YouTube Video Embed Placeholder */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Ride-share brings people together"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen={true}
-                ></iframe>
-              </motion.div>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center p-3 sm:p-4">
+              {/* Instagram Reel Embed */}
+              <iframe
+                className="w-full max-w-[380px] h-[540px] sm:h-[580px] rounded-xl border-0 shadow-sm"
+                src="https://www.instagram.com/reel/DSclpTmE3wq/embed"
+                title="Ride-share brings people together"
+                frameBorder="0"
+                scrolling="no"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen={true}
+              ></iframe>
             </div>
-            <div className="p-6 text-secondary">
+            <div className="p-6 text-secondary text-center">
               <h3 className="text-xl font-enigma text-secondary mb-2">
                 Ride-share brings people together
               </h3>
-              <p className="text-gray-700 font-metropolis">
+              <p className="text-gray-700 font-metropolis text-sm">
                 Watch how SHADE is transforming college transportation and bringing students together through shared rides.
               </p>
             </div>
