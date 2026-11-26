@@ -29,6 +29,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "clean": "node -e \"const fs = require('fs'); ['dist', 'node_modules/.vite'].forEach(d => fs.rmSync(d, { recursive: true, force: true }))\"",
+    "clean:build": "npm run clean && npm run build",
     "preview": "vite preview"
   }
 }

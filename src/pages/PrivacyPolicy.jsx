@@ -1,303 +1,194 @@
 import { motion } from 'framer-motion'
-import { FaShieldAlt, FaLock, FaUserShield, FaInfoCircle } from 'react-icons/fa'
+import { FaArrowLeft, FaShieldAlt, FaEnvelope } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const PrivacyPolicy = () => {
-  const sections = [
-    {
-      title: 'SHADE – SHare A riDE: Terms and Conditions',
-      lastUpdated: 'Last Updated: 05/04/2024',
-      content: [
-        {
-          heading: 'Welcome to SHADE',
-          text: 'SHADE provides an online platform that connects bike owners/riders ("Leads") with individuals seeking a ride ("Fare Payers" or "FPs")…',
-        },
-        {
-          heading: '1. Definitions',
-          items: [
-            'App: The SHADE mobile application.',
-            'User: Anyone who registers for and uses the SHADE App…',
-            'Lead: A registered User who owns or has legal access to a two-wheeler…',
-            'Fare Payer (FP): A registered User who requests, books, and pays…',
-            'Ride: The shared journey…',
-            'User Content: Any information, text, graphics, photos…',
-            'Service: The platform services provided by SHADE…',
-          ],
-        },
-        {
-          heading: '2. The SHADE Service',
-          text: 'SHADE provides a platform to facilitate peer-to-peer ride-sharing on two-wheelers…',
-        },
-        {
-          heading: '3. User Eligibility and Accounts',
-          text: 'You must be at least 18 years old…',
-          subItems: [
-            'Full Name',
-            'Valid Phone number',
-            'Valid Email Address',
-            'Aadhar Number…',
-            'Profile Picture',
-            'For Leads: Driving License, Vehicle Details',
-          ],
-        },
-        {
-          heading: '4. Role-Specific Obligations',
-          items: [
-            'Lead Obligations: Valid license, safety, helmet, legality, etc.',
-            'Fare Payer Obligations: Timeliness, helmet, behavior, payment, etc.',
-          ],
-        },
-        {
-          heading: '5. Ride Posting, Booking, and Pricing',
-          text: 'Rides are posted by Leads, booked by FPs. Pricing shown in-app…',
-        },
-        {
-          heading: '6. Safety Features',
-          items: [
-            'Live Tracking',
-            'Share Location',
-            'Emergency Assistance',
-            'Report User',
-          ],
-        },
-        {
-          heading: '7. User Conduct',
-          text: 'Respect others, follow the law, no harassment or illegal activity…',
-        },
-        {
-          heading: '8. Disclaimers',
-          text: 'SHADE is a platform, not a transport provider. All rides are at users\' risk…',
-        },
-        {
-          heading: '9. Limitation of Liability',
-          text: 'SHADE is not liable for indirect, incidental, or consequential damages…',
-        },
-        {
-          heading: '10. Indemnification',
-          text: 'You agree to hold SHADE harmless for any claims or damages…',
-        },
-        {
-          heading: '11. Termination',
-          text: 'SHADE may terminate your account at its discretion…',
-        },
-        {
-          heading: '12. Governing Law and Dispute Resolution',
-          text: 'Subject to laws of India. Jurisdiction: Coimbatore, Tamil Nadu…',
-        },
-        {
-          heading: '13. Changes to Terms',
-          text: 'We may update these terms and notify users accordingly…',
-        },
-      ],
-    },
-    {
-      title: 'SHADE – SHare A riDE: Privacy Policy',
-      lastUpdated: 'Last Updated: 05/04/2024',
-      content: [
-        {
-          heading: '1. Information We Collect',
-          items: [
-            'Personal Identification (Name, Phone, Email, Aadhar, etc.)',
-            'Lead Info (License, Vehicle details)',
-            'Real-Time Location',
-            'Usage & Device Info',
-            'Emergency Contacts',
-          ],
-        },
-        {
-          heading: '2. How We Use Your Information',
-          items: [
-            'Service delivery',
-            'Verification',
-            'Safety and Legal compliance',
-            'Personalization and communication',
-          ],
-        },
-        {
-          heading: '3. How We Share Your Information',
-          items: [
-            'Between Leads & FPs',
-            'With emergency contacts',
-            'For verification with trusted providers',
-            'Legal requests or business transfers',
-          ],
-        },
-        {
-          heading: '4. Data Security',
-          text: 'We use reasonable encryption and security protocols to protect your data.',
-        },
-        {
-          heading: '5. Data Retention',
-          text: 'We retain necessary data for legal, safety, and business reasons.',
-        },
-        {
-          heading: '6. Your Rights and Choices',
-          items: [
-            'View/edit profile info',
-            'Request account deletion',
-            'Control location access',
-          ],
-        },
-        {
-          heading: '7. Children\'s Privacy',
-          text: 'Not for users under 18. We do not knowingly collect data from minors.',
-        },
-        {
-          heading: '8. Changes to this Policy',
-          text: 'We may update the policy and notify users through the App.',
-        },
-      ],
-    },
-  ]
-
-  const contactInfo = {
-    email: 'theshadeapp@gmail.com',
-    phone: '9629846693',
-    address: '30-A, Vilankurichi Road, Santhi Nagar, Vilankurichi, Coimbatore North, Coimbatore- – 641035, Tamil Nadu',
-  }
-
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="pt-20 min-h-screen bg-gradient-to-b from-white via-white to-primary/10"
+      className="min-h-screen bg-gradient-to-br from-white via-primary/5 to-primary/10 py-12"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back Button */}
+        <Link
+          to="/"
+          className="inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors mb-8"
+        >
+          <FaArrowLeft size={16} />
+          <span>Back to Home</span>
+        </Link>
+
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <FaShieldAlt className="text-primary text-5xl mr-4" />
-            <h1 className="text-4xl md:text-5xl font-enigma text-secondary">
-              Privacy Policy
-            </h1>
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center mb-4">
+            <FaShieldAlt className="text-primary text-4xl mr-3" />
+            <h1 className="text-4xl font-enigma text-secondary">Privacy Policy</h1>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
-          <p className="text-lg text-gray-600 font-metropolis mt-6">
-            Seamlessly connect with your tools and streamline workflows to enhance efficiency and performance.
-          </p>
-        </motion.div>
+          <p className="text-lg text-gray-600 font-metropolis">NEXSHADE SMART MOBILITY PRIVATE LIMITED</p>
+          <p className="text-sm text-gray-500 mt-2">Effective Date: August 4, 2026</p>
+        </div>
 
-        {/* Content Sections */}
-        {sections.map((section, sectionIndex) => (
-          <motion.div
-            key={sectionIndex}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: sectionIndex * 0.2 }}
-            className="bg-white rounded-2xl p-8 md:p-10 shadow-md mb-8"
-          >
-            <div className="mb-6 pb-4 border-b border-gray-200">
-              <h2 className="text-3xl font-enigma text-secondary mb-2">
-                {section.title}
-              </h2>
-              <p className="text-sm text-gray-500 font-metropolis">
-                {section.lastUpdated}
-              </p>
-            </div>
+        {/* Content */}
+        <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl border border-white/50">
+          <div className="prose prose-lg max-w-none text-gray-700 font-metropolis leading-relaxed">
+            <p className="mb-6">
+              <strong>NEXSHADE SMART MOBILITY PRIVATE LIMITED</strong> (&quot;SHADE&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) respects your privacy and is committed to protecting your personal data in accordance with applicable Indian laws, including the <em>Digital Personal Data Protection Act, 2023</em>.
+            </p>
 
-            <div className="space-y-8">
-              {section.content.map((item, index) => (
-                <div key={index} className="border-l-4 border-primary/30 pl-6">
-                  <h3 className="text-xl font-enigma text-secondary mb-3 flex items-center">
-                    <FaInfoCircle className="text-primary mr-2" />
-                    {item.heading}
-                  </h3>
-                  {item.text && (
-                    <p className="text-gray-700 font-metropolis leading-relaxed mb-3">
-                      {item.text}
-                    </p>
-                  )}
-                  {item.items && (
-                    <ul className="space-y-2">
-                      {item.items.map((listItem, itemIndex) => (
-                        <li
-                          key={itemIndex}
-                          className="text-gray-700 font-metropolis flex items-start"
-                        >
-                          <span className="text-primary mr-2">•</span>
-                          <span>{listItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {item.subItems && (
-                    <ul className="space-y-2 mt-3 ml-4">
-                      {item.subItems.map((subItem, subIndex) => (
-                        <li
-                          key={subIndex}
-                          className="text-gray-600 font-metropolis flex items-start"
-                        >
-                          <span className="text-primary mr-2">-</span>
-                          <span>{subItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">1. Information We Collect</h2>
+            <p className="mb-4">We may collect:</p>
 
-        {/* Contact Information */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-2xl p-8 shadow-md"
-        >
-          <div className="flex items-center mb-6">
-            <FaLock className="text-primary text-3xl mr-3" />
-            <h2 className="text-2xl font-enigma text-secondary">
-              Contact Information
-            </h2>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start">
-              <FaUserShield className="text-primary mr-3 mt-1 flex-shrink-0" />
-              <div>
-                <p className="text-sm text-gray-500 font-metropolis mb-1">Email</p>
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-gray-700 font-metropolis hover:text-primary transition-colors"
-                >
-                  {contactInfo.email}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <FaUserShield className="text-primary mr-3 mt-1 flex-shrink-0" />
-              <div>
-                <p className="text-sm text-gray-500 font-metropolis mb-1">Phone</p>
-                <a
-                  href={`tel:${contactInfo.phone}`}
-                  className="text-gray-700 font-metropolis hover:text-primary transition-colors"
-                >
-                  {contactInfo.phone}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <FaUserShield className="text-primary mr-3 mt-1 flex-shrink-0" />
-              <div>
-                <p className="text-sm text-gray-500 font-metropolis mb-1">Address</p>
-                <p className="text-gray-700 font-metropolis">
-                  {contactInfo.address}
+            <h3 className="text-xl font-enigma text-secondary mt-6 mb-2">Personal Information</h3>
+            <ul className="list-disc pl-6 mb-4 space-y-1">
+              <li>Name</li>
+              <li>Mobile number</li>
+              <li>Email address (if provided)</li>
+              <li>Profile photo</li>
+              <li>Gender (if provided)</li>
+              <li>Date of birth (if provided)</li>
+            </ul>
+
+            <h3 className="text-xl font-enigma text-secondary mt-6 mb-2">Identity Verification</h3>
+            <p className="mb-2 text-sm text-gray-600">Where applicable:</p>
+            <ul className="list-disc pl-6 mb-4 space-y-1">
+              <li>Driving Licence</li>
+              <li>Vehicle Registration Certificate (RC)</li>
+              <li>Vehicle Insurance</li>
+              <li>PUC Certificate</li>
+              <li>Identity verification documents</li>
+            </ul>
+
+            <h3 className="text-xl font-enigma text-secondary mt-6 mb-2">Location Information</h3>
+            <ul className="list-disc pl-6 mb-4 space-y-1">
+              <li>Live GPS location</li>
+              <li>Pickup and destination locations</li>
+              <li>Ride route</li>
+              <li>Ride history</li>
+            </ul>
+
+            <h3 className="text-xl font-enigma text-secondary mt-6 mb-2">Device Information</h3>
+            <ul className="list-disc pl-6 mb-6 space-y-1">
+              <li>Device model</li>
+              <li>Operating system</li>
+              <li>App version</li>
+              <li>IP address</li>
+              <li>Device identifiers</li>
+              <li>Crash reports</li>
+              <li>Diagnostic information</li>
+            </ul>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">2. Why We Collect Information</h2>
+            <p className="mb-3">We use your information to:</p>
+            <ul className="list-disc pl-6 mb-6 space-y-2">
+              <li>Create and manage your account.</li>
+              <li>Verify identity and eligibility.</li>
+              <li>Match riders and ride providers.</li>
+              <li>Provide navigation and ride tracking.</li>
+              <li>Improve platform safety.</li>
+              <li>Detect fraud and abuse.</li>
+              <li>Process payments.</li>
+              <li>Provide customer support.</li>
+              <li>Improve our services.</li>
+              <li>Comply with legal obligations.</li>
+            </ul>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">3. Location Data</h2>
+            <p className="mb-3">
+              Location access is essential for ride matching, navigation, safety features, and live ride updates.
+            </p>
+            <p className="mb-6">
+              Location information may be collected while a ride is active and, where necessary, immediately before and after the ride to support these features.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">4. Sharing of Information</h2>
+            <p className="mb-3">We may share information with:</p>
+            <ul className="list-disc pl-6 mb-4 space-y-2">
+              <li>Other matched users as necessary to facilitate a ride.</li>
+              <li>Payment service providers.</li>
+              <li>Cloud service providers.</li>
+              <li>SMS and OTP providers.</li>
+              <li>Mapping and navigation providers.</li>
+              <li>Government authorities where required by law.</li>
+            </ul>
+            <p className="mb-6 font-semibold text-secondary">
+              We do not sell your personal information.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">5. Third-Party Services</h2>
+            <p className="mb-3">SHADE may use services including:</p>
+            <ul className="list-disc pl-6 mb-4 space-y-2">
+              <li>Firebase</li>
+              <li>Google Maps Platform</li>
+              <li>Razorpay</li>
+              <li>MSG91</li>
+              <li>Analytics and cloud infrastructure providers</li>
+            </ul>
+            <p className="mb-6 text-sm text-gray-600">
+              Your use of these integrated services may also be subject to their respective privacy policies.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">6. Data Security</h2>
+            <p className="mb-3">
+              We implement reasonable administrative, technical, and organizational safeguards to protect personal information from unauthorized access, disclosure, alteration, or destruction.
+            </p>
+            <p className="mb-6">
+              No internet-based system can be guaranteed to be completely secure.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">7. Data Retention</h2>
+            <p className="mb-6">
+              We retain personal information only for as long as reasonably necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">8. Your Rights</h2>
+            <p className="mb-3">Subject to applicable law, you may:</p>
+            <ul className="list-disc pl-6 mb-4 space-y-2">
+              <li>Access your personal information.</li>
+              <li>Request correction of inaccurate information.</li>
+              <li>Request deletion of your account and eligible personal data.</li>
+              <li>Withdraw consent for certain processing activities where permitted.</li>
+              <li>Contact us regarding your privacy concerns.</li>
+            </ul>
+            <p className="mb-6 text-sm text-gray-600">
+              Certain information may be retained where required by law or for legitimate business purposes.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">9. Cookies and Analytics</h2>
+            <p className="mb-6">
+              Our website may use cookies and similar technologies to improve user experience, maintain security, and understand website usage.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">10. Children&apos;s Privacy</h2>
+            <p className="mb-6">
+              SHADE is intended only for individuals aged 18 years or older. We do not knowingly collect personal information from children.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">11. Changes to This Policy</h2>
+            <p className="mb-6">
+              We may update this Privacy Policy from time to time. Material changes will be communicated through the Platform or our website where appropriate.
+            </p>
+
+            <h2 className="text-2xl font-enigma text-secondary mt-8 mb-4">12. Contact &amp; Grievance</h2>
+            <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
+              <p className="font-semibold text-secondary mb-3">For privacy requests, complaints, or questions:</p>
+              <div className="space-y-3 text-sm text-gray-700">
+                <p className="flex items-center space-x-2">
+                  <FaEnvelope className="text-primary" />
+                  <span>Email: <a href="mailto:support@theshadeapp.com" className="text-primary hover:underline font-medium">support@theshadeapp.com</a></span>
+                </p>
+                <p className="text-gray-600">
+                  We aim to acknowledge privacy-related requests within a reasonable period and handle them in accordance with applicable law.
                 </p>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   )
 }
 
 export default PrivacyPolicy
-
